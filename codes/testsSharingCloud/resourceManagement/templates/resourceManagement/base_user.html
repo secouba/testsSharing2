@@ -1,0 +1,8 @@
+{% extends 'resourceManagement/base.html' %}
+
+
+{% block navbar %}
+	<li class="nav-item"><a class="nav-link" href="{% url 'book' %}">Réserver</a></li>
+	<li class="nav-item"><a class="nav-link" href="{% url 'lists' %}">Voir la liste des réservations</a></li>
+	<li class="nav-item"><a class="nav-link" href="{% url 'signOut' %}"><button type="button" class="btn btn-success">Déconnexion</button></a></li>
+{% endblock %}

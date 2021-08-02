@@ -1,0 +1,90 @@
+{% extends 'resourceManagement/base_user.html' %}
+
+
+{% block content %}
+	<center>
+		<p><b>Réservations passées:</b></p>
+		<table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">Title</th>
+			  <th scope="col">Début</th>
+			  <th scope="col">Fin</th>
+			  <th scope="col">Utilisateur</th>
+			  <th scope="col">Ressource</th>
+			  <th scope="col">Adresse</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			{% for i in bookings_lt_currentDate %}
+			<tr>
+			  <th scope="row">{{ i.titleB }}</th>
+			  <td>{{ i.startDate }}</td>
+			  <td>{{ i.endDate }}</td>
+			  <td>{{ i.user.firstName }} {{ i.user.lastName }}</td>
+			  <td>{{ i.resource.resourceType }}</td>
+			  <td>{{ i.resource.localisation }}</td>
+			</tr>
+			{% endfor %}
+		  </tbody>
+		</table>
+		
+		<br>
+		<p><b>Réservations en cours:</b></p>
+		<table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">Title</th>
+			  <th scope="col">Début</th>
+			  <th scope="col">Fin</th>
+			  <th scope="col">Utilisateur</th>
+			  <th scope="col">Ressource</th>
+			  <th scope="col">Adresse</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			{% for i in bookings_eq_currentDate %}
+			<tr>
+			  <th scope="row">{{ i.titleB }}</th>
+			  <td>{{ i.startDate }}</td>
+			  <td>{{ i.endDate }}</td>
+			  <td>{{ i.user.firstName }} {{ i.user.lastName }}</td>
+			  <td>{{ i.resource.resourceType }}</td>
+			  <td>{{ i.resource.localisation }}</td>
+			  <td><a href="{% url 'edit_book' id_booking=i.id %}"><button class="btn btn-success">Modifier</button></a></td>
+			  <td><a href="{% url 'delete_book' id_booking=i.id %}"><button class="btn btn-danger">Supprimer</button></a></td></td>
+			</tr>
+			{% endfor %}
+		  </tbody>
+		</table>
+		
+		<br>
+		<p><b>Réservations à venir:</b></p>
+		<table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">Title</th>
+			  <th scope="col">Début</th>
+			  <th scope="col">Fin</th>
+			  <th scope="col">Utilisateur</th>
+			  <th scope="col">Ressource</th>
+			  <th scope="col">Adresse</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			{% for i in bookings_gt_currentDate %}
+			<tr>
+			  <th scope="row">{{ i.titleB }}</th>
+			  <td>{{ i.startDate }}</td>
+			  <td>{{ i.endDate }}</td>
+			  <td>{{ i.user.firstName }} {{ i.user.lastName }}</td>
+			  <td>{{ i.resource.resourceType }}</td>
+			  <td>{{ i.resource.localisation }}</td>
+			  <td><a href="{% url 'edit_book' id_booking=i.id %}"><button class="btn btn-success">Modifier</button></a></td>
+			  <td><a href="{% url 'delete_book' id_booking=i.id %}"><button class="btn btn-danger">Supprimer</button></a></td></td>
+			</tr>
+			{% endfor %}
+		  </tbody>
+		</table>
+	</center>
+{% endblock %}

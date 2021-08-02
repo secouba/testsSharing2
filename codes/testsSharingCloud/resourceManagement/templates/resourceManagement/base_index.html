@@ -1,0 +1,14 @@
+{% extends 'resourceManagement/base.html' %}
+
+
+{% block navbar %}
+	<li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+	<li class="nav-item"><a class="nav-link" href="#portfolio">Resources</a></li>
+	<li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+
+	<li class="nav-item"><a class="nav-link" href="{% url 'sign' %}"><button type="button" class="btn btn-success">Connexion</button></a></li>
+{% endblock %}
+
+{% block content_index %}
+	 {% include 'resourceManagement/content_index.html' %}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'resourceManagement/base_user.html' %}
+
+{% block content %}
+	<center>
+		<form method="POST">
+			{% csrf_token %}
+			<h3>Voulez-vous vraiment supprimer cette réservation ???</h3>
+			<p><input type="submit" value="Oui" /> <a href="{% url 'lists' %}">Annuler</a></p>
+		</form>
+	</center>
+{% endblock %}
